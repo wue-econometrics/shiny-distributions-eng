@@ -35,14 +35,14 @@ shinyServer(function(input, output, session) {
                 # Density
                 a <- ggplot(plotdata, aes(x, y1)) +
                   geom_line() + 
-                  labs(title = "Density of the Normal distribution",
-                       y = "f(x)")
+                  labs(title = "Density of the normal distribution",
+                       y     = "f(x)")
                   
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the Normal distribution") +
-                  labs(y = "F(x) = P(X < x)")
+                  labs(title = "Cumulative distribution function of the normal distribution",
+                       y     = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
                         "None" = {}, # END None 
@@ -61,7 +61,7 @@ shinyServer(function(input, output, session) {
                            
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- pnorm(input$dist.value, mean = input$mu, sd = input$sigma)
                           
@@ -77,7 +77,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -177,10 +177,10 @@ shinyServer(function(input, output, session) {
                   ggtitle("Density of the t-distribution") +
                   labs(y = "f(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the t-distribution") +
+                  ggtitle("Cumulative distribution function of the t-distribution") +
                   labs(y = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
@@ -200,7 +200,7 @@ shinyServer(function(input, output, session) {
                           
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- pt(input$dist.value, df = input$df.t)
                           
@@ -216,7 +216,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -313,13 +313,13 @@ shinyServer(function(input, output, session) {
                 # Density
                 a <- ggplot(plotdata, aes(x, y1)) +
                   geom_line() + 
-                  ggtitle("Density of the Chi-squared distribution") +
+                  ggtitle("Density of the chi-squared distribution") +
                   labs(y = "f(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the Chi-squared distribution") +
+                  ggtitle("Cumulative distribution function of the chi-squared distribution") +
                   labs(y = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
@@ -339,7 +339,7 @@ shinyServer(function(input, output, session) {
                           
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- pchisq(input$dist.value, df = input$df.chi)
                           
@@ -355,7 +355,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -455,10 +455,10 @@ shinyServer(function(input, output, session) {
                   ggtitle("Density of the F-distribution") +
                   labs(y = "f(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the F-distribution") +
+                  ggtitle("Cumulative distribution function of the F-distribution") +
                   labs(y = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
@@ -478,7 +478,7 @@ shinyServer(function(input, output, session) {
                           
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- pf(input$dist.value, df1 = input$df1, df2 = input$df2)
                           
@@ -494,7 +494,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -591,13 +591,13 @@ shinyServer(function(input, output, session) {
                 # Density
                 a <- ggplot(plotdata, aes(x, y1)) +
                   geom_line() + 
-                  ggtitle("Density of the Exponential distribution") +
+                  ggtitle("Density of the exponential distribution") +
                   labs(y = "f(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the Exponential distribution") +
+                  ggtitle("Cumulative distribution function of the exponential distribution") +
                   labs(y = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
@@ -617,7 +617,7 @@ shinyServer(function(input, output, session) {
                           
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- pexp(input$dist.value, rate = input$rate)
                           
@@ -633,7 +633,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -733,10 +733,10 @@ shinyServer(function(input, output, session) {
                   ggtitle("Density of the continous uniform distribution") +
                   labs(y = "f(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_line() +
-                  ggtitle("Distribution function of the continous uniform distribution") +
+                  ggtitle("Cumulative distribution function of the continous uniform distribution") +
                   labs(y = "F(x) = P(X < x)")
                 
                 switch (input$distquant,
@@ -757,7 +757,7 @@ shinyServer(function(input, output, session) {
                           
                         }, # END Value of the density function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           p <- punif(input$dist.value, min = input$axis.updown[1], 
                                      max = input$axis.updown[2])
@@ -774,7 +774,7 @@ shinyServer(function(input, output, session) {
                                              xend = input$dist.value, yend = 1), 
                                          linetype = "dashed", colour = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -876,17 +876,17 @@ shinyServer(function(input, output, session) {
                   ggtitle("Probability mass function of the binomial distribution") + 
                   labs(y = "Probability: p(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_step() +
                   scale_x_continuous(breaks = input$axis.bin[1]:input$axis.bin[2]) +
-                  ggtitle("Distribution function of the binomial distribution") +
+                  ggtitle("Cumulative distribution function of the binomial distribution") +
                   labs(y = "F(x) = P(X ≤ x)")
                 
                 switch (input$distquant,
                         "None" = {}, # END None 
                         
-                        "Value of the probability function" = {
+                        "Value of the probability mass function" = {
                           
                           # d <- dbinom(input$prob.value, size = input$size, prob = input$prob)
                           
@@ -894,9 +894,9 @@ shinyServer(function(input, output, session) {
                             geom_bar(data = subset(plotdata, x == input$prob.value), 
                                      stat="identity", fill = uniblue)
                           
-                        }, # END Value of the probability function
+                        }, # END Value of the probability mass function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           # p <- pbinom(input$dist.value, size = input$size, prob = input$prob)
                           
@@ -904,7 +904,7 @@ shinyServer(function(input, output, session) {
                             geom_bar(data = subset(plotdata, x <= input$dist.value), 
                                      stat="identity", fill = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -968,17 +968,17 @@ shinyServer(function(input, output, session) {
                   ggtitle("Probability function of the poisson distribution") + 
                   labs(y = "Probability: p(x)")
                 
-                # Distribution function
+                # Cumulative distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_step() +
                   scale_x_continuous(breaks = input$axis.pois[1]:input$axis.pois[2]) +
-                  ggtitle("Distribution function of the Poisson distribution") +
+                  ggtitle("Cumulative distribution function of the poisson distribution") +
                   labs(y = "F(x) = P(X ≤ x)")
                 
                 switch (input$distquant,
                         "None" = {}, # END None 
                         
-                        "Value of the probability function" = {
+                        "Value of the probability mass function" = {
                           
                           # d <- dpois(input$prob.value, lambda = input$lambda)
                           
@@ -986,9 +986,9 @@ shinyServer(function(input, output, session) {
                             geom_bar(data = subset(plotdata, x == input$prob.value), 
                                      stat="identity", fill = uniblue)
                           
-                        }, # END Value of the probability function
+                        }, # END Value of the probability mass function
                         
-                        "Value of the distribution function" = {
+                        "Value of the cumulative distribution function" = {
                           
                           # p <- ppois(input$dist.value, lambda = input$lambda)
                           
@@ -996,7 +996,7 @@ shinyServer(function(input, output, session) {
                             geom_bar(data = subset(plotdata, x <= input$dist.value), 
                                      stat="identity", fill = uniblue)
                           
-                        }, # END Value of the distribution function
+                        }, # END Value of the cumulative distribution function
                         
                         "Value of the quantile function" = {
                           
@@ -1054,13 +1054,13 @@ shinyServer(function(input, output, session) {
       # Density function
       a <- ggplot(data.frame(x = -5:5), aes(x)) +
         stat_function(fun = dnorm) +
-        ggtitle("Density of the Normal distribution") +
+        ggtitle("Density of the normal distribution") +
         labs(y = "f(x)")
       
-      # Distribution function
+      # Cumulative distribution function
       b <- ggplot(data.frame(x = -5:5), aes(x)) +
         stat_function(fun = pnorm) +
-        ggtitle("Distribution function of the Normal distribution") +
+        ggtitle("Cumulative distribution function of the normal distribution") +
         labs(y = "F(x) = P(X < x)")
       
     } # END else statement
@@ -1152,36 +1152,36 @@ shinyServer(function(input, output, session) {
     
     switch (input$distquant,
             
-            "Value of the probability function" = {
+            "Value of the probability mass function" = {
               
               seg2 <- ifelse(!(input$dist == "Binomial distribution" | input$dist == "Poisson distribution"),
                              paste0(" is: ", 
-                             h4(code("Continous distributions do not have a probability function. 
+                             h4(code("Continous distributions do not have a probability mass function. 
                                      Use the density function instead."))),
                              paste0(" for \\(x =\\) ", code(input$prob.value), " is: ", 
                                     h4(code(round(d, 4))))
               )
               
-            }, # END Value of the probability function
+            }, # END Value of the probability mass function
             
             "Value of the density function" = {
               
               seg2 <- ifelse(input$dist == "Binomial distribution" | input$dist == "Poisson distribution",
                              paste0(" is: ", 
                                     h4(code("Discrete distributions do not have a density function. 
-                                            Use the probability function instead."))),
+                                            Use the probability mass function instead."))),
                              paste0(" for \\(x =\\) ", code(input$dens.value), " is: ", 
                                     h4(code(round(d, 4))))
                                     )
               
             }, # END Value of the density function
             
-            "Value of the distribution function" = {
+            "Value of the cumulative distribution function" = {
               
               seg2 <- paste0(" for \\(x =\\) ", code(input$dist.value), " is: ", 
                              h4(code(round(p, 4))))
               
-            }, # END Value of the distribution function
+            }, # END Value of the cumulative distribution function
             
             "Value of the quantile function" = {
               

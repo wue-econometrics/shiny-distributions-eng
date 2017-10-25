@@ -120,11 +120,11 @@ shinyUI(
                 selectInput('distquant', NULL,
                             c('None',
                               'Value of the density function',
-                              'Value of the probability function',
-                              'Value of the distribution function',
+                              'Value of the probability mass function',
+                              'Value of the cumulative distribution function',
                               'Value of the quantile function')),
-                conditionalPanel("input.distquant == 'Value of the probability function'",
-                                 helpText("4.2 For which x should the value of the probability 
+                conditionalPanel("input.distquant == 'Value of the probability mass function'",
+                                 helpText("4.2 For which x should the value of the probability mass
                                           function be calculated?"),
                                  numericInput("prob.value", NULL, value = 0)
                                  ),
@@ -133,8 +133,8 @@ shinyUI(
                                           function be calculated?"),
                                  numericInput("dens.value", NULL, value = 0)
                                  ),
-                conditionalPanel("input.distquant == 'Value of the distribution function'",
-                                 helpText("4.2 For which x should the value of the distribution
+                conditionalPanel("input.distquant == 'Value of the cumulative distribution function'",
+                                 helpText("4.2 For which x should the value of the cumulative distribution
                                           function be calculated?"),
                                  numericInput("dist.value", NULL, value = 0)
                                  ),
