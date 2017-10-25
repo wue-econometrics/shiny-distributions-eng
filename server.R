@@ -873,14 +873,14 @@ shinyServer(function(input, output, session) {
                 a <- ggplot(plotdata, aes(x, y1)) +
                   geom_bar(stat = "identity") + 
                   scale_x_continuous(breaks = input$axis.bin[1]:input$axis.bin[2]) +
-                  ggtitle("Wahrscheinlichkeitsfunktion der Binomial distribution") + 
-                  labs(y = "Wahrscheinlichkeit: p(x)")
+                  ggtitle("Probability mass function of the binomial distribution") + 
+                  labs(y = "Probability: p(x)")
                 
                 # Distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
                   geom_step() +
                   scale_x_continuous(breaks = input$axis.bin[1]:input$axis.bin[2]) +
-                  ggtitle("Distribution function of the Binomial distribution") +
+                  ggtitle("Distribution function of the binomial distribution") +
                   labs(y = "F(x) = P(X ≤ x)")
                 
                 switch (input$distquant,
@@ -965,8 +965,8 @@ shinyServer(function(input, output, session) {
                 a <- ggplot(plotdata, aes(x, y1)) +
                   geom_bar(stat = "identity") + 
                   scale_x_continuous(breaks = input$axis.pois[1]:input$axis.pois[2]) +
-                  ggtitle("Wahrscheinlichkeitsfunktion der Poisson distribution") + 
-                  labs(y = "Wahrscheinlichkeit: p(x)")
+                  ggtitle("Probability function of the poisson distribution") + 
+                  labs(y = "Probability: p(x)")
                 
                 # Distribution function
                 b <- ggplot(plotdata, aes(x, y2)) +
@@ -1243,8 +1243,8 @@ shinyServer(function(input, output, session) {
               },
               'Binomial distribution' = {
 
-                param <- paste0(" mit \\(n\\) = ", code(input$size), " Versuchen ",
-                                " und Erfolgswahrscheinlichkeit \\(p\\) = ", code(input$prob))
+                param <- paste0(" with \\(n\\) = ", code(input$size), " trials ",
+                                " and a probability of success \\(p\\) = ", code(input$prob))
 
               },
               'Poisson distribution' = {

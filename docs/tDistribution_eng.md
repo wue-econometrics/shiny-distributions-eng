@@ -41,14 +41,13 @@ where $Z \sim N(0,1)$. Symbolically $Z$ is the square root of a $\chi^2_1$ distr
 Note though: the notation should be understood symbolically. If we draw 
 $n$ values of $X$ and  **subsequently** take their square root the distribution **will not** be a t-distribution! 
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is given by:
+The cumulative distribution function (cdf) is given by:
 
 $$ F(x) = P(X \leq x) = \int^{x}_{-\infty}f(t) dt $$
 
-The value of the distribution function is the probability that the random variable $X$ is less 
-than or equal to $x$.
+The value of the cumulative distribution function is the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 

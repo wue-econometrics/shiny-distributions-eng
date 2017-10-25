@@ -13,19 +13,19 @@ Expected value and variance are indentical and given by:
 
 $$ \text{E}(X) = \text{Var}(X) = \lambda $$
 
-### Probability function
+### Probability mass function
 
-The probability function is given by:
+The probability mass function is given by:
 
 $$ p(x) = P(X = x) = \begin{cases} \frac{\lambda^k}{x!}\exp(-\lambda) & \text{for}\quad x\in \mathbb{N} \\\\ 0 & \text{otherwise} \end{cases} $$
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is defined as:
+The cumulative distribution function (cdf) is defined as:
+  
+  $$ F(x) = P(X \leq x) = \sum_{x_i < x}P(X = x_i) $$
 
-$$ F(x) = P(X \leq x) = \sum_{x_i < x}P(X = x_i) $$
-
-The value of the distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
+The value of the cumulative distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 

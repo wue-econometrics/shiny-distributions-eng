@@ -10,27 +10,27 @@ Notation:
   
   $$ X \sim \text{B}(n, p) \quad\text{mit}\quad n \in \mathbb{N} \quad\text{und}\quad 0 \leq p \leq 1 $$
   
-The binomial distribution is a discrete distribution with distribution parameters $n$ and $p$ where often $n$ is called *number of "experiments"* and $p$ *probability of success*.
+The binomial distribution is a discrete distribution with distribution parameters $n$ and $p$, where $n$ is called the *number of "trials"* and $p$ the *probability of "success"*.
 Expected value and variance are given by:
 
 $$ \text{E}(X) = np \qquad\text{and}\qquad \text{Var}(X) = np(1-p) $$
 
-### Probability function
+### Probability mass function
 
-The probability function is given as follows:
+The probability mass function (pdf) is given as follows:
 
 $$ p(x) = P(X=x) = \begin{cases} \binom{n}{x}p^x (1 - p)^{n-x} & \text{for}\quad x \in \{0,1,2,\dots,n\} \\\\
 0 & \text{otherwise} \end{cases} $$
   
 with $x$ := Number of "matches" and $\binom{n}{x}$ := Binomial coefficient. 
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is defined as:
+The cumulative distribution function (cdf) is defined as:
   
   $$ F(x) = P(X \leq x) = \sum_{x_i < x}P(X = x_i) $$
 
-The value of the distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
+The value of the cumulative distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 

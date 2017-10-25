@@ -31,13 +31,13 @@ a sum of stochastically independant, quadratic standard normally distributed ran
 
 $$ \sum^k_{i = 1} z^2_i \sim \chi^2_k \quad\text{with}\quad z_i \sim N(0,1)\quad\text{and}\quad\text{Cov}(z_i,z_j) = 0 \quad\forall i\neq j $$
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is given by:
+The cumulative distribution function (cdf) is given by:
 
 $$ F(x) = P(X \leq x) = \int^{x}_{-\infty}f(t) dt $$
 
-The value of the distribution function is the probability that the random variable $X$ is less than or equal to $x$.
+The value of the cumulative distribution function is the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 

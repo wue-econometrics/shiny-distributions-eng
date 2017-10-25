@@ -31,13 +31,13 @@ The quotient of two $\chi^2$ distributed random variables divided by their degre
 $$ F_{k_1, k_2} = \frac{\frac{\chi^2_{k_1}}{k_1}}{\frac{\chi^2_{k_2}}{k_2}} = 
 \frac{\chi^2_{k_1}}{\chi^2_{k_2}}\cdot \frac{k_2}{k_1}$$
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is defined as:
+The cumulative distribution function (cdf) is given by:
 
 $$ F(x) = P(X \leq x) = \int^{x}_{-\infty}f(t) dt $$
 
-The value of the distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
+The value of the cumulative distribution function is the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 

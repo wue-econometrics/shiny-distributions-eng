@@ -20,14 +20,13 @@ The density function is given by:
 
 $$ f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\frac{(x - \mu)^2}{\sigma^2}\right) $$
 
-### Distribution function
+### Cumulative distribution function
 
-The distribution function is given by:
+The cumulative distribution function (cdf) is given by:
 
 $$ F(x) = P(X \leq x) = \int^{x}_{-\infty}f(t) dt $$
 
-The value of the distribution function is the probability that the random variable $X$ is less 
-than or equal to $x$.
+The value of the cumulative distribution function is the probability that the random variable $X$ is less than or equal to $x$.
 
 ### Quantile function
 
