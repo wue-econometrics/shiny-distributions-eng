@@ -49,7 +49,7 @@ shinyUI(
         width = 3,
         tabsetPanel(
           tabPanel(
-            "Distributions",
+            "Distributions ",
             fluidRow(
               helpText("1. Chose a distribution"),
               selectInput('dist', NULL, list(
