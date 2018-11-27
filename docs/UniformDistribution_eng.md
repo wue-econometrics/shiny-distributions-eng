@@ -8,7 +8,7 @@ output: html_document
 
 Notation:
 
-$$ X \sim \text{SG}(a, b) \quad\text{with}\quad a, b \in \mathbb{R}\quad\text{and}\quad a \neq b$$
+$$ X \sim \text{Unif}(a, b) \quad\text{with}\quad a, b \in \mathbb{R}\quad\text{and}\quad a \neq b$$
 
 The continous uniform distribution depends on two parameters: a *lower bound* $a$ and am *upper bound* $b$.
 The expected value and the variance are given by
@@ -19,7 +19,7 @@ $$ \text{E}(X) = \frac{b + a}{2} \qquad\text{and}\qquad \text{Var}(X) = \frac{(b
 
 The density is given by:
 
-$$ f(x) = \begin{cases} \frac{1}{b-a} & \text{for}\quad a \leq x \leq b \\\\ 0 & \text{sonst} \end{otherwise} $$
+$$ f(x) = \begin{cases} \frac{1}{b-a} & \text{for}\quad a \leq x \leq b \\\\ 0 & \text{sonst} \end{cases} $$
 
 ### Distribution function
 
