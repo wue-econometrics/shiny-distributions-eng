@@ -76,8 +76,7 @@ The function `BINOM.VERT.BEREICH` calculates: $P(x_1 \leq X \leq x_2)$
 
 **Note**
 
-`BINOM.VERT.BEREICH`($n$; $p$; $x_1$; $x_2$) = `BINOM.VERT`($x_2$; $n$; $p$; WAHR) 
-- `BINOM.VERT`($x_1 - 1$; $n$; $p$; WAHR)
+`BINOM.VERT.BEREICH`($n$; $p$; $x_1$; $x_2$) = `BINOM.VERT`($x_2$; $n$; $p$; WAHR) - `BINOM.VERT`($x_1 - 1$; $n$; $p$; WAHR)
 
 because
 
