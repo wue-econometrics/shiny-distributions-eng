@@ -4,7 +4,7 @@ output: html_document
 
 ***
 
-## Binomial distribution
+## B  inomial distribution
 
 Notation:
   
