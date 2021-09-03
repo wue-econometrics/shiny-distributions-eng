@@ -4,9 +4,9 @@ output: html_document
 
 ***
 
-## B  inomial distribution
+## Binomial distribution
 
-Notation:
+Notationn:
   
   $$ X \sim \text{B}(n, p) \quad\text{mit}\quad n \in \mathbb{N} \quad\text{und}\quad 0 \leq p \leq 1 $$
   
