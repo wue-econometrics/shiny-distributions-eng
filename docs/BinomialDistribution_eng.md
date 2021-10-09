@@ -26,6 +26,8 @@ $$ p(x) = P(X=x) = \begin{cases} \binom{n}{x}p^x (1 - p)^{n-x} & \text{for}\quad
   
 with $x$ := Number of "matches" and $\binom{n}{x}$ := Binomial coefficient. 
 
+![n = 10, p = 0,3](Rplot.png)
+
 ### Cumulative distribution function
 
 The cumulative distribution function (cdf) is defined as:
