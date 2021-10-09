@@ -1,5 +1,7 @@
 ---
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ***
@@ -8,7 +10,7 @@ output: html_document
 
 Notation:
   
-  $$ X \sim \text{B}(n, p) \quad\text{mit}\quad n \in \mathbb{N} \quad\text{und}\quad 0 \leq p \leq 1 $$
+  $$ X \sim \text{B}(n, p) \quad\text{with}\quad n \in \mathbb{N} \quad\text{and}\quad 0 \leq p \leq 1 $$
   
 The binomial distribution is a discrete distribution with distribution parameters $n$ and $p$, where $n$ is called the *number of "trials"* and $p$ the *probability of "success"*.
 Expected value and variance are given by:
