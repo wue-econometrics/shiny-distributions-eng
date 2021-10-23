@@ -26,15 +26,18 @@ $$ p(x) = P(X=x) = \begin{cases} \binom{n}{x}p^x (1 - p)^{n-x} & \text{for}\quad
   
 with $x$ := Number of "matches" and $\binom{n}{x}$ := Binomial coefficient. 
 
-![n = 10, p = 0,3](images/Rplot.png)
+![pdf of binomial distribution with n = 10 and p = 0.3](images/BinPDF.png)
 
 ### Cumulative distribution function
 
 The cumulative distribution function (cdf) is defined as:
   
-  $$ F(x) = P(X \leq x) = \sum_{x_i < x}P(X = x_i) $$
+$$ F(x) = P(X \leq x) = \sum_{x_i < x}P(X = x_i) $$
 
 The value of the cumulative distribution function specifies the probability that the random variable $X$ is less than or equal to $x$.
+
+
+![cdf of binomial distribution with n = 10 and p = 0.3](images/BinCDF.png)
 
 ### Quantile function
 
@@ -42,8 +45,9 @@ The quantile function returns the value $x_p$ under which is $p$%  of the probab
 Formally, the quantile function is the inverse function of the distribution function:
 
 $$ x_p = F^{-1}(p) = F^{-1}[P(X \leq x_p)] $$
-
+![quantile function of with n = 10 and p = 0.3](images/BinQF.png)
 ---
+
 
 ### Excel commands
 
