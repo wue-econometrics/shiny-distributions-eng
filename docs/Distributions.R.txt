@@ -1,0 +1,176 @@
+# Plotting PDFs, CDFs, quantile-functions for certain distributions
+
+## Continuous
+
+### Normal Distribution N(\mu,\sigma) - Note: distribution parameters are mean \mu and standard deviation \sigma (NOT variance \sigma^2!)
+
+##### PDF
+# with plot()
+plot(function(x) dnorm(x, mean = 0, sd = 1),-6,6, main="PDF of standard normal N(0,1)")
+# with curve()
+curve(dnorm(x,mean=0,sd=1),from = -6, to = 6, main="PDF of standard normal N(0,1)") # almost the same
+
+##### CDF
+curve(pnorm(x,mean = 0, sd = 1), -6,6, main="CDF of standard normal N(0,1)")
+
+##### Quantile-Function
+curve(qnorm(x,mean = 0, sd = 1),0,1, main="Quantile function of standard normal N(0,1)")
+
+
+### Weibull Distribution WEI(\vartheta, \alpha, 0) - Note: \vartheta is a scale parameter, \alpha is a form/shape parameter, threshold/location parameter \tau is not used in (basic) R definition
+
+#### PDF
+curve(dweibull(x, scale = 4, shape = 10), 0, 11)
+curve(dweibull(x, scale = 5, shape = 4), 0, 11, lty="dashed", add=T) # with 'add=T' elements are added to the previous plot
+plot(function(x) dweibull(x-6, scale = 4, shape = 10),0,21,add=T) # defining Weibull PDF with threshold \tau = 6
+
+#### CDF
+curve(pweibull(x, scale = 5, shape = 4), 0, 11, lty="dashed")
+
+#### Quantile-Function
+curve(qweibull(x, scale = 5, shape = 4),0,1)
+
+### 3-parameter Weibull distribution provided by package FAdist
+library(FAdist)
+
+curve(dweibull3(x, scale = 4, shape = 10, thres = 2), 0, 11)
+curve(dweibull(x, scale = 4, shape = 10), 0, 11, col="red", add=T) # for comparison
+
+curve(pweibull3(x, scale = 5, shape = 4, thres=2), 0, 11, lty="dashed")
+curve(pweibull(x, scale = 5, shape = 4), 0, 11, col = "red", lty="dashed", add=T)
+
+### log-Normal Distribution
+
+### Exponential Distribution
+
+
+## Discrete
+
+### Binomial Distribution Bi(n,p)
+
+#### PDF
+plot(seq(0,10,1), dbinom(seq(0,10,1), 10, 0.3))
+
+#### CDF
+plot(0:10, pbinom(0:10,10,0.3), xlim = c(-1, 11), type="s") # Type="s" yields step function
+
+#### Quantile Function
+curve(qbinom(x,10,0.3), 0, 1, n=10001)
+
+
+### Poisson Distribution Po(\lambda)
+
+#### PDF
+plot(0:10, dpois(0:10, lambda = 2))
+
+#### CDF
+
+#### Quantile Function
+
+
+# Generating random samples, plotting histograms and fitting distributions
+
+## random sample
+set.seed(123, kind = "Mersenne-Twister") # sets the random number generator (RNG) to a certain state; explicitly stating the kind of RNG should yield same output on different machines
+# if run everytime before the following sampling calls are re-evaluated, we get the same results
+
+## 3-parametric Weibull distribution
+### sampling
+W3sample <- rweibull3(250, scale = 5, shape = 4, thres = 2)
+
+hist(W3sample, pch=20, breaks=25, prob=T, xlim = c(2,12))
+
+### fitting (load package MASS: library(MASS))
+### i.e. estimation of the distribution parameters
+### note: classic estimation procedures are ML estimation and method of moments; but there are a lot of others!
+library(MASS)
+#### fitting with 2-parametric Weibull distribution (no thres / thres = 0)
+
+W2.fit <- fitdistr(W3sample, densfun = "weibull")
+
+W2.fit$estimate # original parameter values: scale = 5, shape = 4, thres = 2 (no thres here!)
+curve(dweibull(x, scale = W2.fit$estimate[2], shape = W2.fit$estimate[1]), col ="orange", lwd=2, add=T) # Note the order of estimates! 
+
+
+#### fitting with 3-parametric Weibull distribution
+#### needs package fitdistrplus (install first, then library(fitdistrplus)
+library(fitdistrplus)
+# Warning: fitdist(W3sample, distr = "weibull3") does not work
+# requires starting values for numerical optimisation!
+W3.fit <- fitdist(W3sample, distr = "weibull3", start = list(scale = 5, shape = 4, thres = 2)) # supplying original values - usually unknown!
+summary(W3.fit) # default method: ML
+curve(dweibull3(x, scale = W3.fit$estimate[1], shape = W3.fit$estimate[2], thres = W3.fit$estimate[3]), col ="red", lwd=2, add=T)
+
+
+#### fitting with Normal distribution
+
+Norm.fit <- fitdist(W3sample, distr = "norm")
+summary(Norm.fit)
+
+curve(dnorm(x, Norm.fit$estimate[1], Norm.fit$estimate[2]), col ="blue", lwd=2, add=T)
+
+#### fitting with 2-parametric Gamma distribution
+
+Gamma.fit <- fitdist(W3sample, distr = "gamma")
+curve(dgamma(x, shape = Gamma.fit$estimate[1], rate = Gamma.fit$estimate[2]), col="green", add = T)
+
+#### fitting with 2-parametric Log-Normal distribution (lnorm)
+
+LNorm.fit <- fitdist(W3sample, distr = "lnorm")
+curve(dlnorm(x, meanlog = LNorm.fit$estimate[1], sdlog = LNorm.fit$estimate[2]), add = T)
+
+#### fitting with 3-parametric Log-Normal distribution (lnorm3) from FAdist package
+
+LNorm3.fit <- fitdist(W3sample, distr = "lnorm3", start = list(shape = 4, scale = 5, thres = 2), method = "mge")
+curve(dlnorm3(x, shape = LNorm3.fit$estimate[1], scale = LNorm3.fit$estimate[2], thres = LNorm3.fit$estimate[3]), col ="black", add = T)
+
+#### fitting with Normal distr and moment method
+
+Norm.moment.fit <- fitdist(W3sample, distr = "norm", method = "mme")
+summary(Norm.moment.fit) # when assuming Normal distribution: ML and moment method coincide
+
+#### fitting with other methods: qme (quantile matching), mge (maximum goodness-of-fit), mse (maximum spacing), and mme
+#### often requires additional input:
+
+fitdist(W3sample, distr = "norm", method = "qme")
+
+
+#### plotting functions from package fitdistrplus
+
+plotdist(W3sample, histo = T, demp = T) # demp = empirical density
+CIcdfplot(W3sample, b = bootdist(Norm.fit, niter=11), CI.output = "probability", CI.type = "two.sided", CI.level = 0.95)
+descdist(W3sample, discrete = F)
+
+#### fitting to data "fitting.txt"
+
+hist(fitting$V1, pch=20, breaks=25, prob=T)
+
+normal.fit <- fitdistr(fitting$V1, densfun = "normal")
+normal.fit
+curve(dnorm(x, mean = normal.fit$estimate[1], sd = normal.fit$estimate[2]), col = "blue", add = T)
+
+weibull2.fit <- fitdistr(fitting$V1, densfun = "weibull")
+curve(dweibull(x, shape = weibull2.fit$estimate[1], scale = weibull2.fit$estimate[2]), col = "red", add = T)
+
+
+#### fitting to data "fitting2.Rdata" - guessing the distribution!
+
+hist(fitting2, probability = T)
+
+fit_w  <- fitdist(fitting2, "weibull")
+fit_g  <- fitdist(fitting2, "gamma")
+fit_ln <- fitdist(fitting2, "lnorm")
+
+plot.legend <- c("Weibull", "lognormal", "gamma")
+denscomp(list(fit_w, fit_g, fit_ln), legendtext = plot.legend)
+cdfcomp (list(fit_w, fit_g, fit_ln), legendtext = plot.legend)
+qqcomp  (list(fit_w, fit_g, fit_ln), legendtext = plot.legend)
+ppcomp  (list(fit_w, fit_g, fit_ln), legendtext = plot.legend)
+
+descdist(fitting2, discrete = F)
+
+library(LaplacesDemon)
+curve(dlaplace(x, location = 25, scale = 10), add = T)
+
+fit_l <- fitdist(fitting2,distr="laplace", start = list(location =20, scale =4))
+summary(fit_l)
