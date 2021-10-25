@@ -47,9 +47,9 @@ The quantile function returns the value $x_p$ under which is $p$%  of the probab
 Formally, the quantile function is the inverse of the distribution function:
 
 $$ x_p = F^{-1}(p) = F^{-1}[P(X \leq x_p)] $$
-![pdf with k = 10](images/ChiPDF.png) \
-![cdf with k = 10](images/ChiCDF.png) \
-![quantile functin with k = 10](images/ChiQF.png)
+![](images/ChiPDF.png) \
+![](images/ChiCDF.png) \
+![](images/ChiQF.png)
 
 ---
 
